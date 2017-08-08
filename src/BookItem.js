@@ -1,13 +1,5 @@
 import React, { Component } from 'react'
-// import * as BooksAPI from './BooksAPI'
-//
-//
-// componentDidMount() {
-//   BooksAPI.getAll().then((books) => {
-// 		console.log(books)
-//     this.setState({ books })
-//   })
-// }
+
 
 // console.log(book)
 class BookItem extends Component {
@@ -15,13 +7,14 @@ class BookItem extends Component {
 		bshelf: this.props.book.shelf
 	}
 
-	onShelfChange = (event, bk) => {
+	onJustThisShelfChange = (event) => {
 		// this.setState({ bshelf: event.target.value })
-
-		this.setState({ bshelf: event.target.value }, function () {
-		    console.log(this.state.bshelf);
+// const shelf = e.target.options[e.target.selectedIndex].value
+		this.setState({ bshelf: event.target.value }, () => {
+			this.props.onShelfChange(this.props.book, this.state.bshelf)
+		    // console.log(this.state.bshelf);
 		})
-		console.log(bk)
+		// console.log(bk)
 		// console.log(book.shelf)
 		// console.log(event.target.value)
 		// console.log(this.state.bshelf)
@@ -50,7 +43,7 @@ class BookItem extends Component {
 						backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
 						</div>
 						<div className="book-shelf-changer">
-							<select defaultValue={book.shelf} onChange={(event) => this.onShelfChange(event, book)}>
+							<select defaultValue={book.shelf} onChange={(event) => this.onJustThisShelfChange(event)}>
 								<option value="none" disabled>Move to...</option>
 								<option value="currentlyReading">Currently Reading</option>
 								<option value="wantToRead">Want to Read</option>
