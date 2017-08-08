@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
+// import sortBy from 'sort-by'
 
 class ListBooks extends Component {
 	static propTypes = {
-		books: PropTypes.array,
+		books: PropTypes.array
 	}
 
 	state = {
@@ -22,18 +22,19 @@ class ListBooks extends Component {
 	}
 
 	render () {
-		const { books } = this.props
+		const { books, bs } = this.props
 		const { query } = this.state
+
 
 		let showingBooks
 		if (query) {
 			const match = new RegExp(escapeRegExp(query), 'i')
 			showingBooks = books.filter((book) => match.test(book.title))
 		} else {
-			showingBooks = books
+			showingBooks = books.filter((book) => book.shelf === bs)
 		}
 
-		showingBooks.sort(sortBy('shelf'))
+		// showingBooks.sort(sortBy('shelf'))
 
 		return (
 			<ol className="books-grid">
