@@ -4,13 +4,13 @@ import ListBooks from './ListBooks'
 
 class BookShelves extends Component {
 	state = {
-    books: [],
+    books: []
     // showSearchPage: false
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-			console.log(books)
+			// console.log(books)
       this.setState({ books })
     })
   }
@@ -20,7 +20,7 @@ class BookShelves extends Component {
 			<div className="bookshelf">
 				<h2 className="bookshelf-title">{this.props.friendlybs}</h2>
 				<div className="bookshelf-books">
-					<ListBooks books={this.state.books} bs={this.props.bs}/>
+					<ListBooks bs={this.props.bs} books={this.state.books} />
 				</div>
 			</div>
 		)
