@@ -10,6 +10,7 @@ class BookShelves extends Component {
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
+			console.log(books)
       this.setState({ books })
     })
   }
@@ -17,7 +18,7 @@ class BookShelves extends Component {
 	render() {
 		return (
 			<div className="bookshelf">
-				<h2 className="bookshelf-title">{this.props.bs}</h2>
+				<h2 className="bookshelf-title">{this.props.friendlybs}</h2>
 				<div className="bookshelf-books">
 					<ListBooks books={this.state.books} bs={this.props.bs}/>
 				</div>
