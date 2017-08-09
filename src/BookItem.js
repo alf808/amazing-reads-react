@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 
 class BookItem extends Component {
-	static propTypes = {
-
-	}
 	state = {
-		bshelf: this.props.book.shelf
+		bshelf: ''
 	}
 
 	onJustThisShelfChange = (event) => {
@@ -17,6 +14,7 @@ class BookItem extends Component {
 
 	render () {
 		const { book } = this.props
+		book.shelf = book.shelf || "none"
 		// console.log(book.shelf)
 		return (
 			<li>
@@ -36,7 +34,7 @@ class BookItem extends Component {
 						</div>
 					</div>
 					<div className="book-title">{book.title}</div>
-					<div className="book-authors">{book.authors.join(", ")}</div>
+					<div className="book-authors">{book.authors ? book.authors.join(", ") : ''}</div>
 				</div>
 			</li>
 		)
