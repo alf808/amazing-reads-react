@@ -24,7 +24,7 @@ class BooksApp extends React.Component {
         results: []
       })
     }
-    console.log(this.state.results)
+    console.log(this.state.results.items)
 	}
 
 	clearQuery = () => {
@@ -65,12 +65,16 @@ class BooksApp extends React.Component {
                 <input type="text" placeholder="Search by title or author"
                 value={this.state.query}
                 onChange={(event) => this.updateQuery(event.target.value)}/>
-{JSON.stringify(this.state.query)}
+                {/*JSON.stringify(this.state.query)*/}
               </div>
             </div>
             <div className="search-books-results">
 
-              {/*<BookShelves bs="" friendlybs="" books={this.state.results} onShelfChange={this.onShelfChange} />*/}
+              {/*this.state.results ? (
+                <BookShelves bs="" friendlybs="" books={this.state.results} onShelfChange={this.onShelfChange} />
+              ) : (
+                <h3>No results</h3>
+              )*/}
             </div>
           </div>
         ) : (
