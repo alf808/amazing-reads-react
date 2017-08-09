@@ -8,12 +8,23 @@ import './App.css'
 class BooksApp extends React.Component {
   state = {
     books: [],
-    showSearchPage: false,
-    query: ''
+    showSearchPage: true,
+    query: '',
+    results: []
   }
 
 	updateQuery = (query) => {
 		this.setState({ query: query.trim() })
+    if (query.trim()) {
+      BooksAPI.search(query, 20).then(books => this.setState({
+        results: books
+      }))
+    } else {
+      this.setState({
+        results: []
+      })
+    }
+    console.log(this.state.results)
 	}
 
 	clearQuery = () => {
@@ -54,11 +65,12 @@ class BooksApp extends React.Component {
                 <input type="text" placeholder="Search by title or author"
                 value={this.state.query}
                 onChange={(event) => this.updateQuery(event.target.value)}/>
-
+{JSON.stringify(this.state.query)}
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+
+              {/*<BookShelves bs="" friendlybs="" books={this.state.results} onShelfChange={this.onShelfChange} />*/}
             </div>
           </div>
         ) : (
@@ -68,11 +80,9 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-
                 <BookShelves bs="currentlyReading" friendlybs="Currently Reading" books={this.state.books} onShelfChange={this.onShelfChange} />
                 <BookShelves bs="wantToRead" friendlybs="Want To Read" books={this.state.books} onShelfChange={this.onShelfChange} />
                 <BookShelves bs="read" friendlybs="Read" books={this.state.books} onShelfChange={this.onShelfChange} />
-
 
               </div>
             </div>

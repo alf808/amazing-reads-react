@@ -1,30 +1,16 @@
 import React, { Component } from 'react'
-// import * as BooksAPI from './BooksAPI'
-
 import PropTypes from 'prop-types'
 // import escapeRegExp from 'escape-string-regexp'
 // import sortBy from 'sort-by'
 import BookItem from './BookItem'
 
 class ListBooks extends Component {
-	// state = {
-	// 	books: []
-	// }
 	static propTypes = {
 		books: PropTypes.array
 	}
 
-	// componentDidMount() {
-  //   BooksAPI.getAll().then((books) => {
-	// 		console.log(books)
-  //     this.setState({ books })
-  //   })
-  // }
-
-
 	render () {
 		const { books, bs } = this.props
-
 		let showingBooks = books.filter((book) => book.shelf === bs)
 // console.log(showingBooks)
 // showingBooks.map((book) => console.log(book))
