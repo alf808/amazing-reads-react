@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import escapeRegExp from 'escape-string-regexp'
-// import sortBy from 'sort-by'
 import BookItem from './BookItem'
 
 class ListBooks extends Component {
 	static propTypes = {
-		books: PropTypes.array
+		books: PropTypes.array.isRequired,
+		bs: PropTypes.string
 	}
 
 	render () {

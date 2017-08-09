@@ -1,39 +1,22 @@
 import React, { Component } from 'react'
 
-
-// console.log(book)
 class BookItem extends Component {
+	static propTypes = {
+
+	}
 	state = {
 		bshelf: this.props.book.shelf
 	}
 
 	onJustThisShelfChange = (event) => {
-		// this.setState({ bshelf: event.target.value })
-// const shelf = e.target.options[e.target.selectedIndex].value
 		this.setState({ bshelf: event.target.value }, () => {
 			this.props.onShelfChange(this.props.book, this.state.bshelf)
 		    // console.log(this.state.bshelf);
 		})
-		// console.log(bk)
-		// console.log(book.shelf)
-		// console.log(event.target.value)
-		// console.log(this.state.bshelf)
-
-    // let newShelf = event.target.value
-
-    // BooksAPI.update(book, event.target.value).then(() => {
-      // book.shelf = shelfValue
-      // this.setState(state => ({
-      //   books:state.books.filter(b => b.id !== book.id).concat([ book ])
-      // }))
-    // })
-    //this.browserHistory.push('/');
   }
 
-	// this.setState({ this.state.bs: book.shelf })
 	render () {
 		const { book } = this.props
-		// const { bs } = this.state
 		// console.log(book.shelf)
 		return (
 			<li>
