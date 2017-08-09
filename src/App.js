@@ -1,6 +1,6 @@
 import React from 'react'
 // import { Route } from 'react-router-dom'
-// import ListBooks from './ListBooks'
+import { Link } from 'react-router-dom'
 import BookShelves from './BookShelves'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
@@ -8,15 +8,24 @@ import './App.css'
 class BooksApp extends React.Component {
   state = {
     books: [],
-    showSearchPage: false
+    showSearchPage: false,
+    query: ''
   }
+
+	updateQuery = (query) => {
+		this.setState({ query: query.trim() })
+	}
+
+	clearQuery = () => {
+		this.setState({ query: ''})
+	}
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
   }
-
+// the code of onShelfChange is an amalgam of code I saw on slack
   onShelfChange = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       book.shelf = shelf
@@ -42,7 +51,9 @@ class BooksApp extends React.Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input type="text" placeholder="Search by title or author"/>
+                <input type="text" placeholder="Search by title or author"
+                value={this.state.query}
+                onChange={(event) => this.updateQuery(event.target.value)}/>
 
               </div>
             </div>
@@ -66,7 +77,9 @@ class BooksApp extends React.Component {
               </div>
             </div>
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+                <Link
+                  to='/search'
+                >Add a book</Link>
             </div>
           </div>
         )}

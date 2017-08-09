@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 // import * as BooksAPI from './BooksAPI'
 
-// import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 // import escapeRegExp from 'escape-string-regexp'
 // import sortBy from 'sort-by'
@@ -12,7 +11,7 @@ class ListBooks extends Component {
 	// 	books: []
 	// }
 	static propTypes = {
-		books: PropTypes.array.isRequired
+		books: PropTypes.array
 	}
 
 	// componentDidMount() {
