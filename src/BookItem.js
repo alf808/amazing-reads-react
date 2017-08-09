@@ -8,14 +8,13 @@ class BookItem extends Component {
 	onJustThisShelfChange = (event) => {
 		this.setState({ bshelf: event.target.value }, () => {
 			this.props.onShelfChange(this.props.book, this.state.bshelf)
-		    // console.log(this.state.bshelf);
 		})
   }
 
 	render () {
 		const { book } = this.props
-		book.shelf = book.shelf || "none"
-		// console.log(book.shelf)
+		if (!book.shelf) {book.shelf = "none"}
+
 		return (
 			<li>
 				<div className="book">
