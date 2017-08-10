@@ -28,9 +28,6 @@ One could start this project from scratch. Just be sure to use [Create React App
  |-- favicon.ico - React Icon, You may change if you wish.
 +-- src/
  +-- icons/ - Helpful images for your app. Use at your discretion.
-  |-- add.svg
-  |-- arrow-back.svg
-  |-- arrow-drop-down.svg
  |-- App.js - This is the root of the app.
  |-- App.css - Styles for your app. Customize as desired.
  |-- App.test.js - Used for testing. Provided with Create React App.
@@ -41,7 +38,6 @@ One could start this project from scratch. Just be sure to use [Create React App
  |-- index.css - Global styles. No need to change anything here.
 |-- .gitignore
 |-- CONTRIBUTING.MD - Information about contributing to this repo.
-TL;DR - Fork and clone your own version of this to use it.
 |-- README.MD - This README file.
 |-- SEARCH_TERMS.md - The whitelisted short collection of available search terms
 for you to use with your app.
@@ -50,23 +46,19 @@ for you to use with your app.
 
 ## Installation (on a terminal)
 **Back-end**
+Clone the github repository, install dependencies, and run server
 ```
-git clone https://github.com/udacity/reactnd-contacts-server.git
-```
-and then install dependencies and run the backend server
-```
-yarn install
-node server.js
+$ git clone https://github.com/udacity/reactnd-contacts-server.git
+$ yarn install
+$ node server.js
 ```
 
 **Front-end**
+Clone the github repository, install dependencies, and run front-end web
 ```
-git clone git@github.com:udacity/reactnd-project-myreads-starter.git
-```
-install the dependencies based package.json, and run the front-end on web browser
-```
-yarn install
-yarn start
+$ git clone git@github.com:udacity/reactnd-project-myreads-starter.git
+$ yarn install
+$ yarn start
 ```
 
 ### When you run the web app
