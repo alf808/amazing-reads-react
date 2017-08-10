@@ -8,16 +8,15 @@ import './App.css'
 
 class BooksApp extends React.Component {
 	state = {
-		books: [],
-		showSearchPage: false,
+		books: []
 	}
 
 	componentDidMount() {
 		BooksAPI.getAll().then((books) => {
-			this.setState({ books, showSearchPage: false })
+			this.setState({ books })
 		})
 	}
-// the code of onShelfChange is an amalgam of code I saw on slack
+	// the code of onShelfChange is an amalgam of code I saw on slack
 	onShelfChange = (book, shelf) => {
 		BooksAPI.update(book, shelf).then(() => {
 			book.shelf = shelf

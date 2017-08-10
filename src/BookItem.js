@@ -10,7 +10,7 @@ class BookItem extends Component {
 		this.setState({ bshelf: event.target.value }, () => {
 			this.props.onShelfChange(this.props.book, this.state.bshelf)
 		})
-  }
+	}
 
 	render () {
 		const { book } = this.props

@@ -18,12 +18,12 @@ class SearchAmazingBooks extends Component {
 	}
 
 	updateQuery = (query) => {
-		this.setState({ query: query.trim() })
+		this.setState({ query })
 
 		if (!query) {
- 				this.setState({results: []})
- 				return
- 		}
+				this.setState({results: []})
+				return
+		}
 
 		BooksAPI.search(query, 20).then(results => {
 			if (results.error) {
@@ -38,7 +38,10 @@ class SearchAmazingBooks extends Component {
 					return book
 			});
 			this.setState({results})
-		});
+		})
+		// .catch((results) => {
+		//  JSON.stringify('Loading results...');
+		// })
 		// console.log(this.state.results)
 	}
 
