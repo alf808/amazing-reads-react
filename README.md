@@ -87,3 +87,11 @@ For the developers, a backend server is provided to develop against. The provide
 
 ## Important
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend. Searches for Basket Weaving or Bubble Wrap don't come back with any results.
+
+## References
+* the great React Udacity lessons
+* https://facebook.github.io/react/docs/thinking-in-react.html
+* https://facebook.github.io/react/docs/react-component.html
+* https://stackoverflow.com/questions/30782948/why-calling-react-setstate-method-doesnt-mutate-the-state-immediately
+* https://stackoverflow.com/questions/44499919/the-context-router-is-marked-as-required-in-link-but-its-value-is-undefine
+* hesitantly, I do have to credit some hints I got from slack which has surprising utility in spite of haphazard usage
