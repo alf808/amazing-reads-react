@@ -51,10 +51,6 @@ class SearchAmazingBooks extends Component {
 			});
 			this.setState({results})
 		})
-		// .catch((results) => {
-		//  JSON.stringify('Loading results...');
-		// })
-		// console.log(this.state.results)
 	}
 
 	// This function will clear the query and results activated by button element.
@@ -77,7 +73,6 @@ class SearchAmazingBooks extends Component {
 							value={query}
 							onChange={(event) => this.updateQuery(event.target.value)}
 						/>
-						{/*JSON.stringify(query)*/}
 						<button onClick={this.clearQuery} className="clear-query-button">clear query</button>
 						</div>
 					</div>

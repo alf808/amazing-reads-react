@@ -32,8 +32,7 @@ class BookItem extends Component {
 			<li>
 				<div className="book">
 					<div className="book-top">
-						<div className="book-cover" style={{ width: 128, height: 193,
-						backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
+						<div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
 						</div>
 						<div className="book-shelf-changer">
 							<select defaultValue={book.shelf} onChange={(event) => this.onJustThisShelfChange(event)}>
