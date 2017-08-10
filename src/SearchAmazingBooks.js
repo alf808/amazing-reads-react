@@ -4,8 +4,18 @@ import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import BookItem from './BookItem'
 // import escapeRegExp from 'escape-string-regexp'
-// import sortBy from 'sort-by'
 
+/**
+ * @description Search component
+ * @prop books
+ * @type Array required
+ * @prop onShelfChange
+ * @type Function required
+ * @state query
+ * @type String
+ * @state results
+ * @type Array
+ */
 class SearchAmazingBooks extends Component {
 	static propTypes = {
 		books: PropTypes.array.isRequired,
@@ -17,6 +27,8 @@ class SearchAmazingBooks extends Component {
 		results: []
 	}
 
+	// This function is the primary function that retrieves search results from
+	// the BooksAPI. It also mediates the corresponding shelves of books.
 	updateQuery = (query) => {
 		this.setState({ query })
 
@@ -30,7 +42,7 @@ class SearchAmazingBooks extends Component {
 					results = []
 			}
 			results = results.map((book) => {
-					// I got the code below from slack
+					// based on code I saw on slack
 					const bookInShelf = this.props.books.find(b => b.id === book.id)
 					if (bookInShelf) {
 							book.shelf = bookInShelf.shelf
@@ -45,6 +57,7 @@ class SearchAmazingBooks extends Component {
 		// console.log(this.state.results)
 	}
 
+	// This function will clear the query and results activated by button element.
 	clearQuery = () => {
 		this.setState({ query: '', results: []})
 	}

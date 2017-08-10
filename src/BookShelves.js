@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import ListBooks from './ListBooks'
 import PropTypes from 'prop-types'
 
+/**
+ * @description an intermediary container component
+ * @prop books
+ * @type Array required
+ * @prop onShelfChange
+ * @type Function required
+ */
 class BookShelves extends Component {
 	static propTypes = {
 		books: PropTypes.array.isRequired,

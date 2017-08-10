@@ -6,17 +6,25 @@ import SearchAmazingBooks from './SearchAmazingBooks'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
+/**
+ * @description root app component
+ * @state books contains an array of book objects
+ * @type Array
+ */
 class BooksApp extends React.Component {
 	state = {
 		books: []
 	}
-
+	// async request to BooksAPI to retrieve MyReads collection of books
 	componentDidMount() {
 		BooksAPI.getAll().then((books) => {
 			this.setState({ books })
 		})
 	}
-	// the code of onShelfChange is an amalgam of code I saw on slack
+	// This allows to dynamically change the shelf of any book among
+	// the following categories: currentlyReading, wantToRead, and read
+	// the code of function onShelfChange is an amalgam of code I wrote
+	// and code I saw on slack
 	onShelfChange = (book, shelf) => {
 		BooksAPI.update(book, shelf).then(() => {
 			book.shelf = shelf
@@ -44,11 +52,14 @@ class BooksApp extends React.Component {
 						<div className="list-books-content">
 							<div>
 
-								<BookShelves bs="currentlyReading" friendlybs="Currently Reading" books={books} onShelfChange={this.onShelfChange} />
+								<BookShelves bs="currentlyReading" friendlybs="Currently Reading"
+									books={books} onShelfChange={this.onShelfChange} />
 
-								<BookShelves bs="wantToRead" friendlybs="Want To Read" books={books} onShelfChange={this.onShelfChange} />
+								<BookShelves bs="wantToRead" friendlybs="Want To Read"
+									books={books} onShelfChange={this.onShelfChange} />
 
-								<BookShelves bs="read" friendlybs="Read" books={books} onShelfChange={this.onShelfChange} />
+								<BookShelves bs="read" friendlybs="Read"
+									books={books} onShelfChange={this.onShelfChange} />
 
 							</div>
 						</div>

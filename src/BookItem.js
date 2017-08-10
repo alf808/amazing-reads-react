@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
+/**
+ * @description Base book component
+ * @prop book
+ * @type object required
+ * @prop onShelfChange
+ * @type function required
+ */
 class BookItem extends Component {
+	static propTypes = {
+		book: PropTypes.object.isRequired,
+		onShelfChange: PropTypes.func.isRequired
+	}
+
 	state = {
 		bshelf: '',
-		book: {}
 	}
 
 	onJustThisShelfChange = (event) => {
