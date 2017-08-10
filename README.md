@@ -1,8 +1,27 @@
-This is the myreads project for the [React Training](https://reacttraining.com). The goal is to write the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+# Amazing Reads Project
+## Introduction
+This single web application written in React allows users to shelve books from an exclusive collection of books
+curated by the makers of BooksAPI.
 
-One could start this project from scratch. Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+Users may shelve books into 3 digital
+compartments, namely _Currently Reading_, _Want to Read_, and _Read_.
 
-## What You're Getting
+## Description of React Components
+There are 5 main components.
+* The root **App** component is the parent component.
+* The base **BookItem** component is youngest child.
+* The intermediary **BookShelves** and
+* **ListBooks** serve as containers and conveyors of props from parent to child.
+* The **SearchAmazingBooks** component retrieves results from the BooksAPI.
+
+## Issues
+With the unidirectional flow of data from parent to child, it became rather tedious to pass states through props in intermediary components.
+It would be more convenient if down through the intermediary components, they knew what states were being passed without having to explicitly state in code.
+
+## Pre-installation Choices
+One could start this project from scratch. Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project. I instead chose to clone the [skeleton project](https://github.com/udacity/reactnd-project-myreads-starter)
+
+## What You're Getting from Skeleton
 ```
 +--public/    
  |-- index.html - DO NOT MODIFY
@@ -29,34 +48,50 @@ for you to use with your app.
 |-- package.json - npm package manager file. No need to modify this.
 ```
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+## Installation (on a terminal)
+**Back-end**
+```
+git clone https://github.com/udacity/reactnd-contacts-server.git
+```
+and then install dependencies and run the backend server
+```
+yarn install
+node server.js
+```
 
+**Front-end**
+```
+git clone git@github.com:udacity/reactnd-project-myreads-starter.git
+```
+install the dependencies based package.json, and run the front-end on web browser
+```
+yarn install
+yarn start
+```
+
+### When you run the web app
+You should get a screen like below:
+![alt text](./src/react-project1-a.png)
+
+Each book has a control that lets you select the shelf for that book.
+
+When you do a search, the books in results can also be placed in your MyReads shelves:
+![alt text](./src/correct-use-of-state.gif)
 ## Backend Server
 
-To simplify development process, a backend server is provided to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods to perform necessary operations on the backend:
+For the developers, a backend server is provided to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods to perform necessary operations on the backend:
 
-### `getAll()`
-* Returns a Promise which resolves to a JSON object containing a collection of book objects.
+#### `getAll()`
 * This collection represents the books currently in the bookshelves in the app.
 
-### `update(book, shelf)`
+#### `update(book, shelf)`
 * book: `<Object>` containing at minimum an `id` attribute
 * shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
-* Returns a Promise which resolves to a JSON object containing the response data of the POST request
 
-### `search(query, maxResults)`
+#### `search(query, maxResults)`
 * query: `<String>`
-* maxResults: `<Integer>` Due to the nature of the backend server, search results are capped at 20, even if this is set higher.
-* Returns a Promise which resolves to a JSON object containing a collection of book objects.
+* maxResults: `<Integer>` Search results are capped at 20, even if this is set higher.
 * These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
 ## Important
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend. Searches for Basket Weaving or Bubble Wrap don't come back with any results. 
-
-## create-react-app
-
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
-
-## Contributing
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend. Searches for Basket Weaving or Bubble Wrap don't come back with any results.
