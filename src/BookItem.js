@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 class BookItem extends Component {
 	state = {
-		bshelf: ''
+		bshelf: '',
+		book: {}
 	}
 
 	onJustThisShelfChange = (event) => {

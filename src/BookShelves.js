@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ListBooks from './ListBooks'
+import PropTypes from 'prop-types'
 
-function BookShelves(props) {
-	return (
-		<div className="bookshelf">
-			<h2 className="bookshelf-title">{props.friendlybs}</h2>
-			<div className="bookshelf-books">
-				<ListBooks bs={props.bs} books={props.books} onShelfChange={props.onShelfChange} />
+class BookShelves extends Component {
+	static propTypes = {
+		books: PropTypes.array.isRequired,
+		onShelfChange: PropTypes.func.isRequired
+	}
+
+	render() {
+		const { books, bs, friendlybs, onShelfChange } = this.props
+
+		return (
+			<div className="bookshelf">
+				<h2 className="bookshelf-title">{friendlybs}</h2>
+				<div className="bookshelf-books">
+					<ListBooks bs={bs} books={books} onShelfChange={onShelfChange} />
+				</div>
 			</div>
-		</div>
-	)
+		)
+	}
 }
 
 export default BookShelves

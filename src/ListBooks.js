@@ -9,16 +9,13 @@ class ListBooks extends Component {
 	}
 
 	render () {
-		const { books, bs } = this.props
+		const { books, bs, onShelfChange } = this.props
 		let showingBooks = books.filter((book) => book.shelf === bs)
-// console.log(showingBooks)
-// showingBooks.map((book) => console.log(book))
-		// showingBooks.sort(sortBy('shelf'))
-// onChange={(event) => onShelfChange(event, book)}
+
 		return (
 			<ol className="books-grid">
 				{showingBooks.map((book) => (
-					<BookItem key={book.id} book={book} onShelfChange={this.props.onShelfChange} />
+					<BookItem key={book.id} book={book} onShelfChange={onShelfChange} />
 				))}
 			</ol>
 		)

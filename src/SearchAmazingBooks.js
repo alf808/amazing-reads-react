@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import BookItem from './BookItem'
 // import escapeRegExp from 'escape-string-regexp'
 // import sortBy from 'sort-by'
 
 class SearchAmazingBooks extends Component {
+	static propTypes = {
+		books: PropTypes.array.isRequired,
+		onShelfChange: PropTypes.func.isRequired
+	}
+
 	state = {
 		query: '',
 		results: []
@@ -15,35 +21,34 @@ class SearchAmazingBooks extends Component {
 		this.setState({ query: query.trim() })
 
 		if (!query) {
- 				this.setState({results: []});
- 				return;
+ 				this.setState({results: []})
+ 				return
  		}
 
 		BooksAPI.search(query, 20).then(results => {
 			if (results.error) {
-					results = [];
+					results = []
 			}
 			results = results.map((book) => {
-					const bookInShelf = this.props.books.find(b => b.id === book.id);
+					// I got the code below from slack
+					const bookInShelf = this.props.books.find(b => b.id === book.id)
 					if (bookInShelf) {
-							book.shelf = bookInShelf.shelf;
+							book.shelf = bookInShelf.shelf
 					}
-					return book;
+					return book
 			});
-			this.setState({results});
+			this.setState({results})
 		});
-		console.log(this.state.results)
+		// console.log(this.state.results)
 	}
-
-
-
-
 
 	clearQuery = () => {
 		this.setState({ query: '', results: []})
 	}
 
 	render() {
+		const { onShelfChange } = this.props
+		const { query, results } = this.state
 
 		return (
 			<div className="search-books">
@@ -53,18 +58,18 @@ class SearchAmazingBooks extends Component {
 					<div className="search-container">
 						<input type="text" placeholder="Search by title or author"
 							className="search-input-field"
-							value={this.state.query}
+							value={query}
 							onChange={(event) => this.updateQuery(event.target.value)}
 						/>
-						{/*JSON.stringify(this.state.query)*/}
-						<button onClick={this.clearQuery} className="clear-query-button">x</button>
+						{/*JSON.stringify(query)*/}
+						<button onClick={this.clearQuery} className="clear-query-button">clear query</button>
 						</div>
 					</div>
 				</div>
 				<div className="search-books-results">
 					<ol className="books-grid">
-						{this.state.results && this.state.results.map((book) => (
-							<BookItem key={book.id} book={book ? book : null} onShelfChange={this.props.onShelfChange} />
+						{results && results.map((book) => (
+							<BookItem key={book.id} book={book ? book : null} onShelfChange={onShelfChange} />
 						))}
 					</ol>
 				</div>
