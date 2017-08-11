@@ -48,7 +48,7 @@ for you to use with your app.
 **Back-end**
 Clone the github repository, install dependencies, and run server
 ```
-$ git clone https://github.com/udacity/reactnd-contacts-server.git
+$ git clone git@github.com:alf808/amazing-reads-server.git
 $ yarn install
 $ node server.js
 ```
@@ -56,7 +56,7 @@ $ node server.js
 **Front-end**
 Clone the github repository, install dependencies, and run front-end web
 ```
-$ git clone git@github.com:udacity/reactnd-project-myreads-starter.git
+$ git clone git@github.com:alf808/amazing-reads-react.git
 $ yarn install
 $ yarn start
 ```
