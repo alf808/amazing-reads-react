@@ -27,6 +27,8 @@ class SearchAmazingBooks extends Component {
 		results: []
 	}
 
+	// TODO: implement with lodash debounce to throttle results output
+
 	// This function is the primary function that retrieves search results from
 	// the BooksAPI. It also mediates the corresponding shelves of books.
 	updateQuery = (query) => {
