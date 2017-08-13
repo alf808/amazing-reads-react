@@ -56,6 +56,7 @@ class SearchAmazingBooks extends Component {
 	// This function will clear the query and results activated by button element.
 	clearQuery = () => {
 		this.setState({ query: '', results: []})
+		document.querySelector(".search-input-field").focus()
 	}
 
 	render() {
@@ -68,7 +69,7 @@ class SearchAmazingBooks extends Component {
 					<Link className="close-search" to="/">Close</Link>
 					<div className="search-books-input-wrapper">
 					<div className="search-container">
-						<input type="text" placeholder="Search by title or author"
+						<input autoFocus type="text" placeholder="Search by title or author"
 							className="search-input-field"
 							value={query}
 							onChange={(event) => this.updateQuery(event.target.value)}
